@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import  api  from '../../api/index';
 import { useMutation, useQueryClient } from 'react-query';
 
+
 const Form = () => {
 
   const [firstName, setFirstName] = useState("");
@@ -131,9 +132,11 @@ const Form = () => {
               }}
           />
         </div>
+
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
+
       </form>
     </>
   );

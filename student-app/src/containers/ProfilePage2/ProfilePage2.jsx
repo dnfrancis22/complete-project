@@ -3,16 +3,15 @@ import { useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useHistory, useParams } from "react-router-dom";
 import api from "../../api/index";
-import { Link } from "react-router-dom";
+const fetchStudents = async () => await api.studentIndex();
 
 const ProfilePage = () => {
-  const { id } = useParams();
-  const history = useHistory();
+  // const { id } = useParams();
+  // const history = useHistory();
 
-  const fetchStudent = async () => await api.show(25, "students");
-  const { status, data, error } = useQuery("students", fetchStudent);
+  const { status, data, error } = useQuery("students", fetchStudents);
 
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   switch (status) {
     case "loading":
@@ -26,12 +25,40 @@ const ProfilePage = () => {
             <div className="row">
               <div className="col">
                 {/* <h4>{musician.phone}</h4> */}
-                <h4 style={{ marginTop: 20 }}>{data.firstName}</h4>
-                <h4>{data.lastName}</h4>
-                <h4>{data.email}</h4>
-                <h4>{data.course}</h4>
-                <h4>{data.courseId}</h4>
-                <h4>{data.gpa}</h4>
+                {/* <h4 style={{ marginTop: 20 }}>{data.firstName}</h4>
+            <h4>{data.lastName}</h4>
+            <h4>{data.email}</h4>
+            <h4>{data.course}</h4>
+            <h4>{data.courseId}</h4>
+            <h4>{data.gpa}</h4> */}
+                <table
+                  class="table table-striped table-hover"
+                  style={{ marginTop: 20 }}
+                >
+                  <thead>
+                    <tr>
+                      <th scope="col">First Name</th>
+                      <th scope="col">Last Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Course</th>
+                      <th scope="col">Course Id</th>
+                      <th scope="col">Gpa</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.map(({id,firstName,lastName,email,course,courseId,gpa}) => (
+                        <tr key={id} data-id={id}>
+                          <td>{firstName}</td>
+                          <td>{lastName}</td>
+                          <td>{email}</td>
+                          <td>{course}</td>
+                          <td>{courseId}</td>
+                          <td>{gpa}</td>
+                        </tr>
+                      )
+                    )}
+                  </tbody>
+                </table>
 
                 <div className="mb-3">
                   <label
@@ -42,7 +69,6 @@ const ProfilePage = () => {
                     Search for courses
                   </label>
                   <div>
-                  <Link to={"/Results"}>
                     <button
                       //   onClick={() => {
                       //     setCity("");
@@ -55,7 +81,6 @@ const ProfilePage = () => {
                     >
                       Search
                     </button>
-                    </Link>
                   </div>
                 </div>
 
@@ -79,16 +104,14 @@ const ProfilePage = () => {
                       //     setInstructor(e.target.value);
                       //   }}
                     />
-                    
-                      <button
-                        //   onClick={handleFormSubmit}
-                        className="btn btn-primary"
-                        type="button"
-                        id="button-addon2"
-                      >
-                        Search
-                      </button>
-                   
+                    <button
+                      //   onClick={handleFormSubmit}
+                      className="btn btn-primary"
+                      type="button"
+                      id="button-addon2"
+                    >
+                      Search
+                    </button>
                   </div>
                 </div>
 

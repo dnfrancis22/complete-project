@@ -4,7 +4,7 @@ const baseURL = 'http://localhost:8080/studentCourse/courses';
 
 const sBaseURL = 'http://localhost:8080/studentCourse/students';
 
-const basesURL = 'http://localhost:8080';
+const basesURL = 'http://localhost:8080/studentCourse';
 
 const api = {
 //   /**
@@ -22,9 +22,9 @@ index() {
   return ky.get(baseURL).json();
 },
 
-studentIndex() {
-  return ky.get(sBaseURL).json();
-},
+// studentIndex() {
+//   return ky.get(sBaseURL).json();
+// },
 
 filteredIndex(resource,filterValue) {
   return ky.get(`${baseURL}/${resource}/${filterValue}`).json();
@@ -35,7 +35,7 @@ filteredIndex(resource,filterValue) {
 //  * @return
 //  */
 
-show(id, path = "/studentCourse/students") {
+show(id, path = "students") {
 return ky.get(`${basesURL}/${path}/${id}`).json();
 },
 

@@ -1,6 +1,7 @@
 import React from "react";
 import  api  from '../../api/index';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { Link } from "react-router-dom";
 
 const fetchCourses = async () => await api.index();
 
@@ -51,11 +52,12 @@ const ResultsPage = () => {
               Return to Profile
             </label>
             <div>
-              {/* <Link to={`/update/${musician._id}`}> */}
+              <Link to={"/Profile"}>
               <button className="btn btn-primary" type="submit">
-                {/* </Link> */}
+                
                 Submit
               </button>
+              </Link>
             </div>
           </div>
         </div>
