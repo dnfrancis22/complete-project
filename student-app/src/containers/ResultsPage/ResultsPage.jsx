@@ -55,7 +55,7 @@ const ResultsPage = () => {
               <Link to={"/Profile"}>
               <button className="btn btn-primary" type="submit">
                 
-                Submit
+                Return
               </button>
               </Link>
             </div>

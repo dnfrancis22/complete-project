@@ -92,15 +92,15 @@ const ProfilePage = () => {
                   </div>
                 </div>
 
-                {/* <Link to={`/update/${musician._id}`}> */}
+                <Link to={"/Update"}>
                 <button
                   className="btn btn-primary"
                   style={{ marginRight: 10, marginTop: 10 }}
                 >
                   update profile
                 </button>
-                {/* </Link> */}
-                {/* <Link to={"/home"}> */}
+                </Link>
+                <Link to={"/"}>
                 <button
                   className="btn btn-primary"
                   style={{ marginRight: 10, marginTop: 10 }}
@@ -111,7 +111,7 @@ const ProfilePage = () => {
                 >
                   delete profile
                 </button>
-                {/* </Link> */}
+                </Link>
               </div>
             </div>
           </main>
